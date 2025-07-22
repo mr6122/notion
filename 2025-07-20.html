@@ -1,74 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Countdown Timer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
-    <style>
-        body { background-color: white; }
-        #timer {
-            color: #eeeeee;
-            text-align: center;
-            text-transform: uppercase;
-            font-family: 'Lato', sans-serif;
-            font-size: .7em;
-            letter-spacing: 5px;
-        }
-        .days, .hours, .minutes, .seconds {
-            display: inline-block;
-            padding: 20px;
-            width: 100px;
-            border-radius: 5px;
-            background: #eeeeee;
-            color: #183059;
-        }
-        .numbers {
-            font-family: 'Montserrat', sans-serif;
-            color:  #183059;
-            font-size: 4em;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Countdown Timer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900" rel="stylesheet">
+  <style>
+    body {
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+    #timer {
+      color: #eeeeee;
+      text-align: center;
+      text-transform: uppercase;
+      font-family: 'Lato', sans-serif;
+      font-size: .7em;
+      letter-spacing: 5px;
+      padding-top: 50px;
+    }
+    .days, .hours, .minutes, .seconds {
+      display: inline-block;
+      padding: 20px;
+      width: 100px;
+      border-radius: 5px;
+      background: #eeeeee;
+      color: #183059;
+      margin: 10px;
+    }
+    .numbers {
+      font-family: 'Montserrat', sans-serif;
+      color: #183059;
+      font-size: 4em;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-    <div id="timer">
-        <div class="days">
-            <div id="days" class="numbers"></div>days
-        </div>
-        <div class="hours">
-            <div id="hours" class="numbers"></div>hours
-        </div>
-        <div class="minutes">
-            <div id="minutes" class="numbers"></div>minutes
-        </div>
-        <div class="seconds">
-            <div id="seconds" class="numbers"></div>seconds
-        </div>
+  <div id="timer">
+    <div class="days">
+      <div id="days" class="numbers"></div>days
     </div>
-    <script>
-        // 목표: 2025년 7월 21일 07:59:00
-        const myDate = new Date('Jul 21, 2025 07:59:00').getTime();
-        let timer = setInterval(function() {
-            const now = new Date().getTime();
-            const diff = myDate - now;
+    <div class="hours">
+      <div id="hours" class="numbers"></div>hours
+    </div>
+    <div class="minutes">
+      <div id="minutes" class="numbers"></div>minutes
+    </div>
+    <div class="seconds">
+      <div id="seconds" class="numbers"></div>seconds
+    </div>
+  </div>
 
-            if (diff < 0) {
-                clearInterval(timer);
-                document.getElementById("timer").innerHTML = "Countdown Complete!";
-                return;
-            }
+  <script>
+    // 목표일: 2025년 7월 22일 16시 30분 (KST 기준)
+    const myDate = new Date('2025-07-22T16:30:00').getTime();
 
-            let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    const timer = setInterval(function () {
+      const now = new Date().getTime();
+      const diff = myDate - now;
 
-            document.getElementById("days").innerText = days;
-            document.getElementById("hours").innerText = hours;
-            document.getElementById("minutes").innerText = minutes;
-            document.getElementById("seconds").innerText = seconds;
-        }, 1000);
-    </script>
+      if (diff < 0) {
+        clearInterval(timer);
+        document.getElementById("timer").innerHTML = "Countdown Complete!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+    }, 1000);
+  </script>
 </body>
 </html>
