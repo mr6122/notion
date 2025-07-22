@@ -20,15 +20,28 @@
       letter-spacing: 5px;
       padding-top: 50px;
     }
+
     .days, .hours, .minutes, .seconds {
       display: inline-block;
       padding: 20px;
       width: 100px;
       border-radius: 5px;
+    }
+
+    .days {
+      background: #eeeeee;
+    }
+    .hours {
       background: #eeeeee;
       color: #183059;
-      margin: 10px;
     }
+    .minutes {
+      background: #eeeeee;
+    }
+    .seconds {
+      background: #eeeeee;
+    }
+
     .numbers {
       font-family: 'Montserrat', sans-serif;
       color: #183059;
@@ -54,8 +67,8 @@
   </div>
 
   <script>
-    // 목표일: 2025년 7월 22일 16시 30분 (KST 기준)
-    const myDate = new Date('2025-07-22T16:30:00').getTime();
+    // 목표 시간: 2025년 7월 22일 16시 36분
+    const myDate = new Date('2025-07-22T16:36:00').getTime();
 
     const timer = setInterval(function () {
       const now = new Date().getTime();
